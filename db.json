@@ -1,0 +1,44 @@
+{
+  "clientes": [
+    {
+      "nombre": "Andres criollo",
+      "empresa": "criollodevSof",
+      "email": "andres@gmail.com",
+      "telefono": "3227867856",
+      "notas": "desarrollador de software",
+      "id": 1
+    },
+    {
+      "nombre": "matelsa",
+      "empresa": "matelsa s.a",
+      "email": "matelsa@gmail.com",
+      "telefono": "378965889",
+      "notas": "ropa super buena",
+      "id": 3
+    },
+    {
+      "nombre": "casino",
+      "empresa": "casino verano",
+      "email": "veranocasino@gmail.com",
+      "telefono": "3156301380",
+      "notas": "centro comercial aqua",
+      "id": 4
+    },
+    {
+      "nombre": "santiago",
+      "empresa": "todo cortinas",
+      "email": "todocortinas@gmail.com",
+      "telefono": "3227867856",
+      "notas": "pagina web",
+      "id": 6
+    },
+    {
+      "nombre": "Betplay",
+      "empresa": "Betplay sas",
+      "email": "betplay@gmail.com",
+      "telefono": "23659877",
+      "notas": "apuestas deportivas y poker",
+      "id": 7
+    }
+  ]
+}
