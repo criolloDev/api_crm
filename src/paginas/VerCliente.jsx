@@ -7,18 +7,17 @@ const VerCliente = () => {
 
     const {id} = useParams();
 
-    const [cliente, setCliente] = useState({})
+    const [paciente, setPaciente] = useState({})
 
     const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
-        const obtenerClienteAPI = async () => {
+        const obtenerPacienteAPI = async () => {
             try {
-                const url = `http://localhost:4000/clientes/${id}`
+                const url = `http://localhost:4000/pacientes/${id}`
                 const respuesta = await fetch(url)
                 const resultado = await respuesta.json()
-                console.log(resultado)
-                setCliente(resultado)
+                setPaciente(resultado)
                 
             } catch (error) {
                 console.log(error)
@@ -29,14 +28,14 @@ const VerCliente = () => {
             }, 100);
       
         }
-        obtenerClienteAPI()
+        obtenerPacienteAPI()
     }, [])
     
-    const {nombre, empresa, telefono, email, notas} = cliente;
+    const {nombre, email, telefono, propietario, sintomas, fechaEntrada, fechaAlta} = paciente;
 
   return (
     
-    cargando ? <Spinner />: Object.keys(cliente).length === 0 ? <p> No hay resultados </p> : (
+    cargando ? <Spinner />: Object.keys(paciente).length === 0 ? <p> No hay resultados </p> : (
     
         <div>
             <>
@@ -46,26 +45,34 @@ const VerCliente = () => {
                 
                 <div className="bg-white mt-5 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
         
-                    <p className="text-4xl text-gray-600 mt-10 text-center capitalize">
+                    <p className="text-3xl text-gray-600 mt-5 text-center capitalize">
                         <span className="text-gray-600 uppercase font-bold "> Cliente: </span>
                         {nombre} 
                     </p>
                     <p className="text-2xl text-gray-600 mt-10 capitalize">
-                        <span className="text-gray-600 uppercase font-bold "> Email: </span>
+                        <span className="text-gray-600 font-bold "> Nombre propietario: </span>
+                        {propietario} 
+                    </p>
+                    <p className="text-2xl text-gray-600 mt-4 capitalize">
+                        <span className="text-gray-600 font-bold "> Email: </span>
                         {email} 
                     </p>
                     <p className="text-2xl text-gray-600 mt-4 capitalize">
-                        <span className="text-gray-600 uppercase font-bold "> Telefono: </span>
+                        <span className="text-gray-600 font-bold "> Telefono: </span>
                         {telefono} 
                     </p>
                     <p className="text-2xl text-gray-600 mt-4 capitalize">
-                        <span className="text-gray-600 uppercase font-bold "> Empresa: </span>
-                        {empresa} 
+                        <span className="text-gray-600 font-bold "> Fecha de entrada: </span>
+                        {fechaEntrada} 
                     </p>
-                    { notas && (
+                    <p className="text-2xl text-gray-600 mt-4 capitalize">
+                        <span className="text-gray-600 font-bold "> Fecha aproximada de alta: </span>
+                        {fechaAlta} 
+                    </p>
+                    { sintomas && (
                         <p className="text-2xl text-gray-600 mt-4 capitalize">
-                        <span className="text-gray-600 uppercase font-bold "> Notas: </span>
-                        {notas} 
+                        <span className="text-gray-600 font-bold "> Sintomas: </span>
+                        {sintomas} 
                         </p>
                     )}
                     

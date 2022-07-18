@@ -1,44 +1,59 @@
 {
-  "clientes": [
+  "pacientes": [
     {
-      "nombre": "Andres criollo",
-      "empresa": "criollodevSof",
-      "email": "andres@gmail.com",
+      "nombre": "toby",
+      "propietario": "andres",
+      "email": "criollomoralesc@gmail.com",
       "telefono": "3227867856",
-      "notas": "desarrollador de software",
+      "fechaEntrada": "2022-07-16",
+      "fechaAlta": "2022-07-17",
+      "sintomas": "mordedura de tarantula y cojo",
+      "alta": true,
       "id": 1
     },
     {
-      "nombre": "matelsa",
-      "empresa": "matelsa s.a",
-      "email": "matelsa@gmail.com",
-      "telefono": "378965889",
-      "notas": "ropa super buena",
+      "nombre": "teo",
+      "propietario": "cristian",
+      "email": "criollomoralesc@gmail.com",
+      "telefono": "3227867856",
+      "fechaEntrada": "2022-07-16",
+      "fechaAlta": "2022-07-17",
+      "sintomas": "mordedura de tarantula y cojo",
+      "alta": true,
+      "id": 2
+    },
+    {
+      "nombre": "pandora",
+      "propietario": "yecenia",
+      "email": "criollomoralesc@gmail.com",
+      "telefono": "3227867856",
+      "fechaEntrada": "2022-07-16",
+      "fechaAlta": "2022-07-17",
+      "sintomas": "mordedura de tarantula y cojo",
+      "alta": true,
       "id": 3
     },
     {
-      "nombre": "casino",
-      "empresa": "casino verano",
-      "email": "veranocasino@gmail.com",
-      "telefono": "3156301380",
-      "notas": "centro comercial aqua",
+      "nombre": "terry",
+      "propietario": "paula",
+      "email": "criollomoralesc@gmail.com",
+      "telefono": "3227867856",
+      "fechaEntrada": "2022-07-16",
+      "fechaAlta": "2022-07-17",
+      "sintomas": "mordedura de tarantula y cojo",
+      "alta": true,
       "id": 4
     },
     {
-      "nombre": "santiago",
-      "empresa": "todo cortinas",
-      "email": "todocortinas@gmail.com",
-      "telefono": "3227867856",
-      "notas": "pagina web",
-      "id": 6
-    },
-    {
-      "nombre": "Betplay",
-      "empresa": "Betplay sas",
-      "email": "betplay@gmail.com",
-      "telefono": "23659877",
-      "notas": "apuestas deportivas y poker",
-      "id": 7
+      "nombre": "roy",
+      "propietario": "marcela",
+      "email": "criollomoralesc@gmail.com",
+      "telefono": "3156301380",
+      "fechaEntrada": "2022-07-16",
+      "fechaAlta": "2022-07-30",
+      "sintomas": "habla mucho y duerme como perro",
+      "alta": true,
+      "id": 5
     }
   ]
 }

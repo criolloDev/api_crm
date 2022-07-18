@@ -12,9 +12,9 @@ const Formulario = ({cliente, cargando}) => {
         nombre: Yup.string()
                     .min(3, 'El nombre es muy corto')
                     .max(30, 'El nombre es muy largo')
-                    .required('El nombre del cliente es obligatorio'),
-        empresa: Yup.string()
-                    .required('El nombre de la empresa es obligatorio'),
+                    .required('El nombre de la mascota es obligatorio'),
+        propietario: Yup.string()
+                    .required('El nombre del propietario es obligatorio'),
         email: Yup.string()
                     .email('Email no valido')
                     .required('El email es obligatorio'),
@@ -23,14 +23,19 @@ const Formulario = ({cliente, cargando}) => {
                     .integer('Numero no valido')
                     .typeError('El numero no es valido')
                     .required('El telefono es obligatorio'),
-                 
+        fechaEntrada: Yup.date()
+                    .required('La fecha de entrada es obligatoria'),
+        fechaAlta: Yup.date()
+                    .required('La fecha de alta es obligatoria'), 
+        sintomas: Yup.string()
+                    .required('Los sintomas del paciente son obligatorios'),        
     })
 
     const handleSubmit = async (valores) => {
         try {
             if (cliente.id) {
                 //Editar un cliente
-                const url = `http://localhost:4000/clientes/${cliente.id}`
+                const url = `http://localhost:4000/pacientes/${cliente.id}`
 
                 const respuesta = await fetch(url, {
                     method: 'PUT',
@@ -40,11 +45,11 @@ const Formulario = ({cliente, cargando}) => {
                     }
                 })
                 await respuesta.json()
-                navigate('/clientes')
+                navigate('/pacientes')
                 
             }else{
                 //Agregar un nuevo cliente
-                const url = 'http://localhost:4000/clientes'
+                const url = 'http://localhost:4000/pacientes'
 
                 const respuesta = await fetch(url, {
                     method: 'POST',
@@ -54,7 +59,7 @@ const Formulario = ({cliente, cargando}) => {
                     }
                 })
                 await respuesta.json()
-                navigate('/clientes')
+                navigate('/pacientes')
             }
             
         } catch (error) {
@@ -69,15 +74,18 @@ const Formulario = ({cliente, cargando}) => {
         <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
             
             <h1 className=" text-gray-600 font-bold text-xl uppercase 
-            text-center"> {cliente?.nombre ? 'Editar cliente' : 'Agregar cliente'} </h1>
+            text-center"> {cliente?.nombre ? 'Editar paciente' : 'Agregar paciente'} </h1>
 
             <Formik
                 initialValues={{
                     nombre: cliente?.nombre ?? '',
-                    empresa: cliente?.empresa ?? '',
+                    propietario: cliente?.propietario ?? '',
                     email: cliente?.email ?? '',
                     telefono: cliente?.telefono ?? '',
-                    notas: cliente?.notas ?? '',
+                    fechaEntrada: cliente?.fechaEntrada ?? '',
+                    fechaAlta: cliente?.fechaAlta ?? '',
+                    sintomas: cliente?.sintomas ?? '',
+                    alta: false,
                 }}
                 enableReinitialize={true}
                 onSubmit={ async(values, {resetForm}) => {
@@ -97,13 +105,13 @@ const Formulario = ({cliente, cargando}) => {
                             className="text-gray-800"
                             htmlFor="nombre"
                         >
-                            Nombre:
+                            Nombre mascota:
                         </label>
                         <Field 
                             id="nombre"
                             type="text"
                             className=" mt-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Nombre del cliente"
+                            placeholder="Nombre de la mascota"
                             name="nombre"
                         />
 
@@ -115,20 +123,20 @@ const Formulario = ({cliente, cargando}) => {
                     <div className="mb-4">
                         <label 
                             className="text-gray-800"
-                            htmlFor="empresa"
+                            htmlFor="propietario"
                         >
-                            Empresa:
+                            Nombre propietario:
                         </label>
                         <Field 
-                            id="empresa"
+                            id="propietario"
                             type="text"
                             className=" mt-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Nombre de la empresa"
-                            name="empresa"
+                            placeholder="Nombre del propietario"
+                            name="propietario"
                         />
 
-                        {errors.empresa && touched.empresa ? (
-                            <Alerta mensaje = {errors.empresa}/>
+                        {errors.propietario && touched.propietario ? (
+                            <Alerta mensaje = {errors.propietario}/>
                         ): null}
 
                     </div>
@@ -174,22 +182,59 @@ const Formulario = ({cliente, cargando}) => {
                     <div className="mb-4">
                         <label 
                             className="text-gray-800"
-                            htmlFor="notas"
+                            htmlFor="fechaEntrada"
                         >
-                            Notas:
+                            Fecha de entrada:
+                        </label>
+                        <Field
+                            id="fechaEntrada"
+                            type="date"
+                            className=" mt-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            name="fechaEntrada"
+                        />
+                        {errors.fechaEntrada && touched.fechaEntrada ? (
+                            <Alerta mensaje = {errors.fechaEntrada}/>
+                        ): null}
+                    </div>
+                    <div className="mb-4">
+                        <label 
+                            className="text-gray-800"
+                            htmlFor="fechaAlta"
+                        >
+                            Fecha de alta estimada:
+                        </label>
+                        <Field
+                            id="fechaAlta"
+                            type="date"
+                            className=" mt-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            name="fechaAlta"
+                        />
+                        {errors.fechaAlta && touched.fechaAlta ? (
+                            <Alerta mensaje = {errors.fechaAlta}/>
+                        ): null}
+                    </div>
+                    <div className="mb-4">
+                        <label 
+                            className="text-gray-800"
+                            htmlFor="sintomas"
+                        >
+                            Sintomas:
                         </label>
                         <Field 
                             as="textarea"
-                            id="notas"
+                            id="sintomas"
                             type="text"
                             className=" mt-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Notas del cliente"
-                            name="notas"
+                            placeholder="Sintomas del paciente"
+                            name="sintomas"
                         />
+                        {errors.sintomas && touched.sintomas ? (
+                            <Alerta mensaje = {errors.sintomas}/>
+                        ): null}
                     </div>
                     <input 
                         type="submit"
-                        value= {cliente?.nombre ? 'Editar cliente' : 'Agregar cliente'}
+                        value= {cliente?.nombre ? 'Editar paciente' : 'Agregar paciente'}
                         className="cursor-pointer mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg"
                     />
                 </Form>
