@@ -7,6 +7,7 @@ import VerCliente from './paginas/VerCliente'
 import Historial from './paginas/Historial'
 
 function App() {
+  console.log(import.meta.env)
   return (
     <BrowserRouter>
         <Routes>

@@ -8,7 +8,7 @@
       "fechaEntrada": "2022-07-16",
       "fechaAlta": "2022-07-17",
       "sintomas": "mordedura de tarantula y cojo",
-      "alta": true,
+      "alta": false,
       "id": 1
     },
     {
@@ -19,7 +19,7 @@
       "fechaEntrada": "2022-07-16",
       "fechaAlta": "2022-07-17",
       "sintomas": "mordedura de tarantula y cojo",
-      "alta": true,
+      "alta": false,
       "id": 2
     },
     {
@@ -30,7 +30,7 @@
       "fechaEntrada": "2022-07-16",
       "fechaAlta": "2022-07-17",
       "sintomas": "mordedura de tarantula y cojo",
-      "alta": true,
+      "alta": false,
       "id": 3
     },
     {
@@ -41,7 +41,7 @@
       "fechaEntrada": "2022-07-16",
       "fechaAlta": "2022-07-17",
       "sintomas": "mordedura de tarantula y cojo",
-      "alta": true,
+      "alta": false,
       "id": 4
     },
     {
@@ -52,8 +52,19 @@
       "fechaEntrada": "2022-07-16",
       "fechaAlta": "2022-07-30",
       "sintomas": "habla mucho y duerme como perro",
-      "alta": true,
+      "alta": false,
       "id": 5
+    },
+    {
+      "nombre": "manchas",
+      "propietario": "vecina",
+      "email": "criollomoralesc@gmail.com",
+      "telefono": "3227867856",
+      "fechaEntrada": "2022-07-18",
+      "fechaAlta": "2022-07-18",
+      "sintomas": "dolor depie",
+      "alta": true,
+      "id": 6
     }
   ]
 }
